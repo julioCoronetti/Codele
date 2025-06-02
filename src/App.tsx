@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ChangeEvent } from "react";
+import { type ChangeEvent, useEffect, useRef, useState } from "react";
 import { Row } from "./components/Row";
 import { getTodayTerm } from "./utils/getTodayWord";
 
@@ -64,8 +64,8 @@ const App = () => {
 				</form>
 			)}
 			<div className="mt-5">
-				{guesses.map((guess, index) => (
-					<Row key={index} guess={guess} targetWord={targetWord} />
+				{guesses.map((guess) => (
+					<Row key={guess} guess={guess} targetWord={targetWord} />
 				))}
 			</div>
 			{isGameOver && guesses[guesses.length - 1] === targetWord && (

@@ -7,18 +7,18 @@ export const Row = ({ guess, targetWord }: RowProps) => {
 	function getLetterStatus(letter: string, index: number) {
 		if (letter === targetWord[index]) {
 			return "correct";
-		} else if (targetWord.includes(letter)) {
-			return "present";
-		} else {
-			return "absent";
 		}
+		if (targetWord.includes(letter)) {
+			return "present";
+		}
+		return "absent";
 	}
 
 	return (
 		<div className="flex justify-center m-[5px]">
 			{guess.split("").map((letter, index) => (
 				<span
-					key={index}
+					key={letter}
 					className={`w-10 h-10 inline-flex justify-center items-center m-0.5 text-white font-bold text-[1.2em]
                         ${getLetterStatus(letter, index) === "correct" ? "bg-green-500" : ""}
                     
