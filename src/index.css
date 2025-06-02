@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Cherry+Bomb+One&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 body {
-	font-family: Arial, sans-serif;
-	background: linear-gradient(135deg, #f3e7e9, #e3eeff);
+	font-family: "Afacad Flux", sans-serif;
+	background: linear-gradient(135deg, #f9dce1, #9eb9e1);
+}
+
+h1 {
+	font-family: "Cherry Bomb One", sans-serif;
 }
 
 @theme inline {
