@@ -38,7 +38,7 @@ const App = () => {
 
 	return (
 		<div className="h-screen flex flex-col items-center">
-			<h1 className="text-4xl my-10 text-gray-700">Codele</h1>
+			<h1 className="text-5xl my-10 text-gray-700">Codele</h1>
 
 			{!isGameOver && (
 				<form
@@ -46,7 +46,6 @@ const App = () => {
 						e.preventDefault();
 						handleGuess();
 					}}
-					
 					className="flex items-center gap-5"
 				>
 					<input
@@ -62,7 +61,7 @@ const App = () => {
 						className="bg-gray-700 px-5 py-3 text-xl font-bold text-white outline-0 shadow-xl shadow-black/30 cursor-pointer rounded-xl transition duration-150 ease-in-out hover:scale-110"
 						type="submit"
 					>
-						Guess
+						ENTER
 					</button>
 				</form>
 			)}
