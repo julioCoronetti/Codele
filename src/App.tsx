@@ -37,8 +37,18 @@ const App = () => {
 	}
 
 	return (
-		<div className="h-screen flex flex-col items-center">
-			<h1 className="text-5xl my-10 text-gray-700">Codele</h1>
+		<div className="h-screen flex flex-col items-center space-y-5 ">
+			<h1 className="text-6xl text-gray-700">Codele</h1>
+
+			<div className="flex flex-col">
+				{Array.from({ length: maxAttempts }).map((_, index) => (
+					<Row
+						key={index}
+						guess={guesses[index] || ""}
+						targetWord={targetWord}
+					/>
+				))}
+			</div>
 
 			{!isGameOver && (
 				<form
@@ -65,11 +75,6 @@ const App = () => {
 					</button>
 				</form>
 			)}
-			<div className="mt-5">
-				{guesses.map((guess) => (
-					<Row key={guess} guess={guess} targetWord={targetWord} />
-				))}
-			</div>
 			{isGameOver && guesses[guesses.length - 1] === targetWord && (
 				<Dialog open={isGameOver} onOpenChange={setIsGameOver}>
 					<DialogContent className="h-50 w-90 flex flex-col items-center justify-center text-gray-700 bg-white/90">
