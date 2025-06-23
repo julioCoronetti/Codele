@@ -1,2 +1,5 @@
 ignoredBuiltDependencies:
+  - '@biomejs/biome'
+  - '@swc/core'
   - '@tailwindcss/oxide'
+  - esbuild
