@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Cherry+Bomb+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=DynaPuff&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -6,11 +6,10 @@
 
 body {
 	font-family: "Afacad Flux", sans-serif;
-	background: linear-gradient(135deg, #f9dce1, #9eb9e1);
 }
 
-h1 {
-	font-family: "Cherry Bomb One", sans-serif;
+h1, p {
+	font-family: "DynaPuff", sans-serif;
 }
 
 @theme inline {
