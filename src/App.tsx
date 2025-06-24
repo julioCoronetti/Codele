@@ -1,8 +1,8 @@
+import { LightbulbIcon } from "lucide-react";
 import { type ChangeEvent, useEffect, useId, useRef, useState } from "react";
 import { Row } from "./components/Row";
 import { Dialog, DialogContent } from "./components/ui/dialog";
 import { getTodayTerm } from "./utils/getTodayWord";
-import { LightbulbIcon } from "lucide-react";
 
 const term = getTodayTerm();
 
@@ -50,14 +50,14 @@ const App = () => {
 					<LightbulbIcon className="text-white" />
 				</button>
 			</nav>
-			<h1 className="text-[10rem] tracking-[3rem] text-gray-700/15 absolute z-0 select-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold">
+			<h1 className="text-[10rem] tracking-[3rem] text-gray-700/15 absolute z-0 select-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold max-lg:text-[8rem] max-lg:tracking-[2rem] max-md:text-[5rem] max-md:tracking-[1.5rem] max-sm:text-[3.5rem]">
 				Codele
 			</h1>
 			<div className="h-full flex flex-col items-center justify-center relative gap-5">
 				<div className="flex flex-col z-10">
 					{Array.from({ length: maxAttempts }).map((_, index) => (
 						<Row
-							key={term.word}
+							key={guesses[index] ?? `empty-${index}`}
 							guess={guesses[index] || ""}
 							targetWord={targetWord}
 						/>
@@ -73,7 +73,7 @@ const App = () => {
 						className="flex items-center gap-5"
 					>
 						<input
-							className="border-5 border-gray-700 outline-0 rounded-sm px-5 py-3 text-xl font-bold"
+							className="border-5 border-gray-700 outline-0 rounded-sm px-5 py-3 text-xl font-bold text-white"
 							ref={inputRef}
 							onChange={handleInputChange}
 							maxLength={targetWord.length}
