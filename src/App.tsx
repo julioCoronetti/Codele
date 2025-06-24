@@ -1,7 +1,7 @@
-import { type ChangeEvent, useEffect, useRef, useState } from "react";
+import { type ChangeEvent, useEffect, useId, useRef, useState } from "react";
 import { Row } from "./components/Row";
-import { getTodayTerm } from "./utils/getTodayWord";
 import { Dialog, DialogContent } from "./components/ui/dialog";
+import { getTodayTerm } from "./utils/getTodayWord";
 
 const term = getTodayTerm();
 
@@ -36,6 +36,8 @@ const App = () => {
 		}
 	}
 
+	const id = useId();
+
 	return (
 		<div className="h-screen flex flex-col items-center space-y-5 ">
 			<h1 className="text-6xl text-gray-700">Codele</h1>
@@ -43,7 +45,7 @@ const App = () => {
 			<div className="flex flex-col">
 				{Array.from({ length: maxAttempts }).map((_, index) => (
 					<Row
-						key={index}
+						key={term.word}
 						guess={guesses[index] || ""}
 						targetWord={targetWord}
 					/>
@@ -65,7 +67,7 @@ const App = () => {
 						maxLength={targetWord.length}
 						placeholder="Enter your guess"
 						value={currentGuess}
-						id="guessInput"
+						id={id}
 					/>
 					<button
 						className="bg-gray-700 px-5 py-3 text-xl font-bold text-white outline-0 shadow-xl shadow-black/30 cursor-pointer rounded-xl transition duration-150 ease-in-out hover:scale-110"

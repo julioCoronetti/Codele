@@ -3,3 +3,6 @@ ignoredBuiltDependencies:
   - '@swc/core'
   - '@tailwindcss/oxide'
   - esbuild
+
+onlyBuiltDependencies:
+  - core-js

@@ -22,7 +22,7 @@ export const Row = ({ guess, targetWord }: RowProps) => {
 				const isFilled = letter.trim().length > 0;
 				return (
 					<span
-						key={index}
+						key={letter}
 						className={`w-13 h-13 inline-flex justify-center items-center mx-0.5 my-1 font-bold text-3xl rounded
                             ${isFilled ? "text-white" : "text-transparent border-3 border-gray-700 bg-transparent rounded-xl"}
                             ${isFilled && getLetterStatus(letter, index) === "correct" ? "bg-green-500" : ""}
