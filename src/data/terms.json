@@ -2,50 +2,50 @@
 	{
 		"id": 1,
 		"word": "array",
-		"hint": "Estrutura de dados",
-		"definition": "Estrutura que armazena vários valores em sequência.",
-		"languages": ["todas"]
+		"hint": "Data Structure",
+		"definition": "Structure that stores multiple values in sequence.",
+		"languages": ["All languages"]
 	},
 	{
 		"id": 2,
 		"word": "while",
-		"hint": "Estrutura de repetição",
-		"definition": "Executa um bloco de código enquanto a condição for verdadeira.",
-		"languages": ["javascript", "python", "java", "csharp", "c++"]
+		"hint": "Repetition structure",
+		"definition": "Executes a block of code while the condition is true.",
+		"languages": ["JavaScript", "Python", "Java", "C#", "C++"]
 	},
 	{
 		"id": 3,
 		"word": "input",
-		"hint": "Entrada do usuário",
-		"definition": "Comando usado para receber dados do usuário.",
-		"languages": ["python", "java", "csharp", "javascript"]
+		"hint": "User input",
+		"definition": "Command used to receive data from the user.",
+		"languages": ["Python", "Java", "C#", "JavaScript"]
 	},
 	{
 		"id": 4,
 		"word": "print",
-		"hint": "Saída no terminal",
-		"definition": "Comando usado para exibir informações na tela.",
-		"languages": ["python", "javascript", "java", "csharp", "c++"]
+		"hint": "Exit at the terminal",
+		"definition": "Command used to display information on the screen.",
+		"languages": ["Python", "JavaScript", "Java", "C#", "C++"]
 	},
 	{
 		"id": 5,
 		"word": "null",
-		"hint": "Valor vazio",
-		"definition": "Representa a ausência de um valor.",
-		"languages": ["todas"]
+		"hint": "Empty value",
+		"definition": "Represents the absence of a value.",
+		"languages": ["All languages"]
 	},
 	{
 		"id": 6,
 		"word": "if",
-		"hint": "Condicional",
-		"definition": "Executa um bloco de código se a condição for verdadeira.",
-		"languages": ["todas"]
+		"hint": "Conditional",
+		"definition": "Executes a block of code if the condition is true.",
+		"languages": ["All languages"]
 	},
 	{
 		"id": 7,
 		"word": "for",
-		"hint": "Laço de repetição",
-		"definition": "Executa um bloco de código várias vezes, com base em uma condição.",
-		"languages": ["todas"]
+		"hint": "Repeat loop",
+		"definition": "Executes a block of code multiple times, based on a condition.",
+		"languages": ["All languages"]
 	}
 ]
