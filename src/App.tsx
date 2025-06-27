@@ -1,10 +1,10 @@
 import { LightbulbIcon } from "lucide-react";
 import { type ChangeEvent, useEffect, useId, useRef, useState } from "react";
+import { toast } from "sonner";
 import { Row } from "./components/Row";
 import { Dialog, DialogContent } from "./components/ui/dialog";
-import { getTodayTerm } from "./utils/getTodayWord";
 import { Toaster } from "./components/ui/sonner";
-import { toast } from "sonner";
+import { getTodayTerm } from "./utils/getTodayWord";
 
 const term = getTodayTerm();
 
