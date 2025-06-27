@@ -3,6 +3,8 @@ import { type ChangeEvent, useEffect, useId, useRef, useState } from "react";
 import { Row } from "./components/Row";
 import { Dialog, DialogContent } from "./components/ui/dialog";
 import { getTodayTerm } from "./utils/getTodayWord";
+import { Toaster } from "./components/ui/sonner";
+import { toast } from "sonner";
 
 const term = getTodayTerm();
 
@@ -37,6 +39,20 @@ const App = () => {
 		}
 	}
 
+	useEffect(() => {
+		if (guesses.length === 2) {
+			toast.info(`This word appears in ${term.languages}`, {
+				duration: 2000,
+			});
+		}
+
+		if (guesses.length === 4) {
+			toast.info(`This word is a ${term.hint}`, {
+				duration: 2000,
+			});
+		}
+	}, [guesses.length]);
+
 	const id = useId();
 
 	return (
@@ -46,10 +62,43 @@ const App = () => {
 				<button
 					type="button"
 					className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out"
+					onClick={() => {
+						if (guesses.length < 2) {
+							toast.warning(
+								"You can only view the hint at the start of the game.",
+								{
+									duration: 10000,
+								},
+							);
+						} else if (guesses.length === 2) {
+							toast.info(`This word appears in ${term.languages}`, {
+								duration: 10000,
+							});
+						} else if (guesses.length === 4) {
+							toast.info(`This word appears in ${term.languages}`, {
+								duration: 10000,
+							});
+							toast.info(`This word is a ${term.hint}`, {
+								duration: 10000,
+							});
+						}
+					}}
 				>
 					<LightbulbIcon className="text-white" />
 				</button>
 			</nav>
+			<Toaster
+				expand={true}
+				position="top-right"
+				closeButton
+				richColors
+				toastOptions={{
+					style: {
+						marginTop: "3rem",
+						fontSize: "1rem",
+					},
+				}}
+			/>
 			<h1 className="text-[10rem] tracking-[3rem] text-gray-700/15 absolute z-0 select-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold max-lg:text-[8rem] max-lg:tracking-[2rem] max-md:text-[5rem] max-md:tracking-[1.5rem] max-sm:text-[3.5rem]">
 				Codele
 			</h1>

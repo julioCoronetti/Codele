@@ -2,50 +2,50 @@
 	{
 		"id": 1,
 		"word": "array",
-		"hint": "Data Structure",
+		"hint": "data Structure",
 		"definition": "Structure that stores multiple values in sequence.",
 		"languages": ["All languages"]
 	},
 	{
 		"id": 2,
 		"word": "while",
-		"hint": "Repetition structure",
+		"hint": "repetition structure",
 		"definition": "Executes a block of code while the condition is true.",
 		"languages": ["JavaScript", "Python", "Java", "C#", "C++"]
 	},
 	{
 		"id": 3,
 		"word": "input",
-		"hint": "User input",
+		"hint": "user input",
 		"definition": "Command used to receive data from the user.",
 		"languages": ["Python", "Java", "C#", "JavaScript"]
 	},
 	{
 		"id": 4,
 		"word": "print",
-		"hint": "Exit at the terminal",
+		"hint": "exit at the terminal",
 		"definition": "Command used to display information on the screen.",
 		"languages": ["Python", "JavaScript", "Java", "C#", "C++"]
 	},
 	{
 		"id": 5,
 		"word": "null",
-		"hint": "Empty value",
+		"hint": "empty value",
 		"definition": "Represents the absence of a value.",
-		"languages": ["All languages"]
+		"languages": ["all languages"]
 	},
 	{
 		"id": 6,
 		"word": "if",
-		"hint": "Conditional",
+		"hint": "conditional",
 		"definition": "Executes a block of code if the condition is true.",
-		"languages": ["All languages"]
+		"languages": ["all languages"]
 	},
 	{
 		"id": 7,
 		"word": "for",
-		"hint": "Repeat loop",
+		"hint": "repeat loop",
 		"definition": "Executes a block of code multiple times, based on a condition.",
-		"languages": ["All languages"]
+		"languages": ["all languages"]
 	}
 ]
