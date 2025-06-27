@@ -5,6 +5,7 @@ import { Row } from "./components/Row";
 import { Dialog, DialogContent } from "./components/ui/dialog";
 import { Toaster } from "./components/ui/sonner";
 import { getTodayTerm } from "./utils/getTodayWord";
+import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
 
 const term = getTodayTerm();
 
@@ -161,10 +162,14 @@ const App = () => {
 
 				{isGameOver && guesses[guesses.length - 1] && (
 					<Dialog open={showResult} onOpenChange={setShowResult}>
-						<DialogContent className="h-150 w-200 flex flex-col items-center justify-center text-gray-400 bg-gray-900 rounded-sm ">
-							<h1 className="text-4xl text-white">Progress</h1>
+						<DialogContent className="h-150 w-200 flex flex-col items-center justify-center text-white bg-gray-900 rounded-sm">
+							<DialogTitle className="text-4xl text-white">
+								Progress
+							</DialogTitle>
 							<div></div>
-							<p className="text-2xl">{`The correct word is ${targetWord}!`}</p>
+							<DialogDescription className="text-2xl">
+								The correct word is <span className="text-emerald-500">{targetWord}!</span>
+							</DialogDescription>
 						</DialogContent>
 					</Dialog>
 				)}
