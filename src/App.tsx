@@ -1,4 +1,4 @@
-import { LightbulbIcon } from "lucide-react";
+import { ChartNoAxesColumn, LightbulbIcon } from "lucide-react";
 import { type ChangeEvent, useEffect, useId, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Row } from "./components/Row";
@@ -14,9 +14,18 @@ const App = () => {
 
 	const [guesses, setGuesses] = useState<string[]>([]);
 	const [currentGuess, setCurrentGuess] = useState<string>("");
-	const [isGameOver, setIsGameOver] = useState<boolean>(false);
+	const [showResult, setShowResult] = useState(false);
 
 	const inputRef = useRef<HTMLInputElement>(null);
+
+	const isGameOver =
+		guesses.includes(targetWord) || guesses.length >= maxAttempts;
+
+	useEffect(() => {
+		if (isGameOver) {
+			setShowResult(true);
+		}
+	}, [isGameOver]);
 
 	useEffect(() => {
 		inputRef.current?.focus();
@@ -27,16 +36,14 @@ const App = () => {
 	};
 
 	function handleGuess() {
+		if (isGameOver) {
+			return;
+		}
 		if (currentGuess.length !== term.word.length) {
 			return;
 		}
-		const updatedGuesses = [...guesses, currentGuess];
-		setGuesses(updatedGuesses);
+		setGuesses([...guesses, currentGuess]);
 		setCurrentGuess("");
-
-		if (currentGuess === targetWord || updatedGuesses.length >= maxAttempts) {
-			setIsGameOver(true);
-		}
 	}
 
 	useEffect(() => {
@@ -56,36 +63,49 @@ const App = () => {
 	const id = useId();
 
 	return (
-		<main className="h-screen w-screen flex flex-col bg-gradient-to-tl from-gray-500 to-gray-300">
+		<main className="h-screen w-screen flex flex-col bg-gradient-to-bl from-white to-gray-200">
 			<nav className="w-full h-15 border-b-1 border-white bg-gray-700 flex items-center justify-between px-5 tracking-widest">
 				<p className="text-2xl font-bold text-white">Codele</p>
-				<button
-					type="button"
-					className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out"
-					onClick={() => {
-						if (guesses.length < 2) {
-							toast.warning(
-								"You can only view the hint at the start of the game.",
-								{
+				<div className="flex h-full">
+					<button
+						type="button"
+						className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out"
+						onClick={() => {
+							if (isGameOver) {
+								setShowResult(true);
+							}
+						}}
+					>
+						<ChartNoAxesColumn className="text-white" />
+					</button>
+					<button
+						type="button"
+						className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out"
+						onClick={() => {
+							if (guesses.length < 2 && !isGameOver) {
+								toast.warning(
+									"You can only view the hint at the start of the game.",
+									{
+										duration: 10000,
+									},
+								);
+							} else if (guesses.length === 2 && !isGameOver) {
+								toast.info(`This word appears in ${term.languages}`, {
 									duration: 10000,
-								},
-							);
-						} else if (guesses.length === 2) {
-							toast.info(`This word appears in ${term.languages}`, {
-								duration: 10000,
-							});
-						} else if (guesses.length === 4) {
-							toast.info(`This word appears in ${term.languages}`, {
-								duration: 10000,
-							});
-							toast.info(`This word is a ${term.hint}`, {
-								duration: 10000,
-							});
-						}
-					}}
-				>
-					<LightbulbIcon className="text-white" />
-				</button>
+								});
+							} else if (guesses.length === 4 || isGameOver) {
+								toast.info(`This word appears in ${term.languages}`, {
+									duration: 10000,
+								});
+								toast.info(`This word is a ${term.hint}`, {
+									duration: 10000,
+								});
+							}
+						}}
+					>
+						<LightbulbIcon className="text-white" />
+					</button>
+				</div>
 			</nav>
 			<Toaster
 				expand={true}
@@ -99,7 +119,7 @@ const App = () => {
 					},
 				}}
 			/>
-			<h1 className="text-[10rem] tracking-[3rem] text-gray-700/15 absolute z-0 select-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold max-lg:text-[8rem] max-lg:tracking-[2rem] max-md:text-[5rem] max-md:tracking-[1.5rem] max-sm:text-[3.5rem]">
+			<h1 className="text-[10rem] tracking-[3rem] text-gray-700/10 absolute z-0 select-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold max-lg:text-[8rem] max-lg:tracking-[2rem] max-md:text-[5rem] max-md:tracking-[1.5rem] max-sm:text-[3.5rem]">
 				Codele
 			</h1>
 			<div className="h-full flex flex-col items-center justify-center relative gap-5">
@@ -122,7 +142,7 @@ const App = () => {
 						className="flex items-center gap-5"
 					>
 						<input
-							className="border-5 border-gray-700 outline-0 rounded-sm px-5 py-3 text-xl font-bold text-white"
+							className="border-5 border-gray-700 outline-0 rounded-sm px-5 py-3 text-xl font-bold text-gray-700"
 							ref={inputRef}
 							onChange={handleInputChange}
 							maxLength={targetWord.length}
@@ -138,19 +158,13 @@ const App = () => {
 						</button>
 					</form>
 				)}
-				{isGameOver && guesses[guesses.length - 1] === targetWord && (
-					<Dialog open={isGameOver} onOpenChange={setIsGameOver}>
-						<DialogContent className="h-50 w-90 flex flex-col items-center justify-center text-gray-700 bg-white/90">
-							<h1 className="text-4xl text-green-500">Congratulations!</h1>
+
+				{isGameOver && guesses[guesses.length - 1] && (
+					<Dialog open={showResult} onOpenChange={setShowResult}>
+						<DialogContent className="h-150 w-200 flex flex-col items-center justify-center text-gray-400 bg-gray-900 rounded-sm ">
+							<h1 className="text-4xl text-white">Progress</h1>
+							<div></div>
 							<p className="text-2xl">{`The correct word is ${targetWord}!`}</p>
-						</DialogContent>
-					</Dialog>
-				)}
-				{isGameOver && guesses[guesses.length - 1] !== targetWord && (
-					<Dialog open={isGameOver} onOpenChange={setIsGameOver}>
-						<DialogContent className="h-50 w-90 flex flex-col items-center justify-center text-gray-700 bg-white/90">
-							<h1 className="text-4xl text-red-500">Game over!</h1>
-							<p className="text-2xl">{`The word was: ${targetWord}`}</p>
 						</DialogContent>
 					</Dialog>
 				)}
