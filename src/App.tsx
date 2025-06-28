@@ -1,3 +1,4 @@
+import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
 import { ChartNoAxesColumn, LightbulbIcon } from "lucide-react";
 import { type ChangeEvent, useEffect, useId, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -5,7 +6,6 @@ import { Row } from "./components/Row";
 import { Dialog, DialogContent } from "./components/ui/dialog";
 import { Toaster } from "./components/ui/sonner";
 import { getTodayTerm } from "./utils/getTodayWord";
-import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
 
 const term = getTodayTerm();
 
@@ -168,7 +168,8 @@ const App = () => {
 							</DialogTitle>
 							<div></div>
 							<DialogDescription className="text-2xl">
-								The correct word is <span className="text-emerald-500">{targetWord}!</span>
+								The correct word is{" "}
+								<span className="text-emerald-500">{targetWord}!</span>
 							</DialogDescription>
 						</DialogContent>
 					</Dialog>
