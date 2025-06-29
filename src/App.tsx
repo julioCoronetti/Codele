@@ -1,7 +1,7 @@
 import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
-import { ChartNoAxesColumn, LightbulbIcon } from "lucide-react";
 import { type ChangeEvent, useEffect, useId, useRef, useState } from "react";
 import { toast } from "sonner";
+import { Navigation } from "./components/Navigation";
 import { Row } from "./components/Row";
 import { Dialog, DialogContent } from "./components/ui/dialog";
 import { Toaster } from "./components/ui/sonner";
@@ -65,49 +65,11 @@ const App = () => {
 
 	return (
 		<main className="h-screen w-screen flex flex-col bg-gradient-to-bl from-white to-gray-200">
-			<nav className="w-full h-15 border-b-1 border-white bg-gray-700 flex items-center justify-between px-5 tracking-widest">
-				<p className="text-2xl font-bold text-white">Codele</p>
-				<div className="flex h-full">
-					<button
-						type="button"
-						className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out"
-						onClick={() => {
-							if (isGameOver) {
-								setShowResult(true);
-							}
-						}}
-					>
-						<ChartNoAxesColumn className="text-white" />
-					</button>
-					<button
-						type="button"
-						className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out"
-						onClick={() => {
-							if (guesses.length < 2 && !isGameOver) {
-								toast.warning(
-									"You can only view the hint at the start of the game.",
-									{
-										duration: 10000,
-									},
-								);
-							} else if (guesses.length === 2 && !isGameOver) {
-								toast.info(`This word appears in ${term.languages}`, {
-									duration: 10000,
-								});
-							} else if (guesses.length === 4 || isGameOver) {
-								toast.info(`This word appears in ${term.languages}`, {
-									duration: 10000,
-								});
-								toast.info(`This word is a ${term.hint}`, {
-									duration: 10000,
-								});
-							}
-						}}
-					>
-						<LightbulbIcon className="text-white" />
-					</button>
-				</div>
-			</nav>
+			<Navigation
+				guesses={guesses}
+				isGameOver={isGameOver}
+				setShowResult={setShowResult}
+			/>
 			<Toaster
 				expand={true}
 				position="top-right"
