@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=DynaPuff&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Cascadia+Code&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -10,7 +10,7 @@ body {
 
 h1,
 p {
-	font-family: "DynaPuff", sans-serif;
+	font-family: "Cascadia Code", sans-serif;
 }
 
 @theme inline {
