@@ -1,9 +1,7 @@
-import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
 import { type ChangeEvent, useEffect, useId, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Navigation } from "./components/Navigation";
 import { Row } from "./components/Row";
-import { Dialog, DialogContent } from "./components/ui/dialog";
 import { Toaster } from "./components/ui/sonner";
 import { getTodayTerm } from "./utils/getTodayWord";
 
@@ -15,18 +13,12 @@ const App = () => {
 
 	const [guesses, setGuesses] = useState<string[]>([]);
 	const [currentGuess, setCurrentGuess] = useState<string>("");
-	const [showResult, setShowResult] = useState(false);
+	const [openProgress, setOpenProgress] = useState(false);
 
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const isGameOver =
 		guesses.includes(targetWord) || guesses.length >= maxAttempts;
-
-	useEffect(() => {
-		if (isGameOver) {
-			setShowResult(true);
-		}
-	}, [isGameOver]);
 
 	useEffect(() => {
 		inputRef.current?.focus();
@@ -61,6 +53,22 @@ const App = () => {
 		}
 	}, [guesses.length]);
 
+	useEffect(() => {
+		if (isGameOver && guesses.length > 0) {
+			const lastGuess = guesses[guesses.length - 1];
+			if (lastGuess === targetWord) {
+				toast.success(`Parabéns! Você acertou: ${targetWord}`, {
+					duration: 1800,
+				});
+			} else {
+				toast.error(`Fim de jogo! A palavra era: ${targetWord}`, {
+					duration: 1800,
+				});
+			}
+			setTimeout(() => setOpenProgress(true), 2000);
+		}
+	}, [isGameOver, guesses, targetWord]);
+
 	const id = useId();
 
 	return (
@@ -68,12 +76,12 @@ const App = () => {
 			<Navigation
 				guesses={guesses}
 				isGameOver={isGameOver}
-				setShowResult={setShowResult}
+				openProgress={openProgress}
+				setOpenProgress={setOpenProgress}
 			/>
 			<Toaster
 				expand={true}
-				position="top-right"
-				closeButton
+				position="top-center"
 				richColors
 				toastOptions={{
 					style: {
@@ -120,21 +128,6 @@ const App = () => {
 							ENTER
 						</button>
 					</form>
-				)}
-
-				{isGameOver && guesses[guesses.length - 1] && (
-					<Dialog open={showResult} onOpenChange={setShowResult}>
-						<DialogContent className="h-150 w-200 flex flex-col items-center justify-center text-white bg-gray-900 rounded-sm">
-							<DialogTitle className="text-4xl text-white">
-								Progress
-							</DialogTitle>
-							<div></div>
-							<DialogDescription className="text-2xl">
-								The correct word is{" "}
-								<span className="text-emerald-500">{targetWord}!</span>
-							</DialogDescription>
-						</DialogContent>
-					</Dialog>
 				)}
 			</div>
 		</main>
