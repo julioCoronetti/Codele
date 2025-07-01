@@ -1,6 +1,12 @@
 import { ChartNoAxesColumn, LightbulbIcon } from "lucide-react";
 import { getTodayTerm } from "@/utils/getTodayWord";
-import { Dialog, DialogContent, DialogOverlay, DialogTitle, DialogTrigger } from "./ui/dialog";
+import {
+	Dialog,
+	DialogContent,
+	DialogOverlay,
+	DialogTitle,
+	DialogTrigger,
+} from "./ui/dialog";
 
 type NavigationProps = {
 	guesses: string[];
@@ -35,20 +41,19 @@ export const Navigation = ({
 				</Dialog>
 
 				<Dialog>
-					<DialogTrigger
-						className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out"
-					>
+					<DialogTrigger className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out">
 						<LightbulbIcon className="text-white" />
 					</DialogTrigger>
 					<DialogContent className=" w-100 flex flex-col text-white bg-gray-900 rounded-sm top-[30%] left-[83%]  text-xl">
-
-						<h2 className="flex items-center text-4xl gap-2 mb-5">Hints <span className="text-3xl">💡</span></h2>
+						<h2 className="flex items-center text-4xl gap-2 mb-5">
+							Hints <span className="text-3xl">💡</span>
+						</h2>
 
 						{guesses.length < 2 && !isGameOver && (
 							<p>You can only view the hint at the start of the game.</p>
 						)}
 
-						{(guesses.length === 2 && !isGameOver) && (
+						{guesses.length === 2 && !isGameOver && (
 							<li>This word appears in {term.languages.join(", ")}</li>
 						)}
 
