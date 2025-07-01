@@ -41,7 +41,7 @@ const App = () => {
 
 	useEffect(() => {
 		if (guesses.length === 2) {
-			toast.info(`This word appears in ${term.languages}`, {
+			toast.info(`This word appears in ${term.languages.join(", ")}`, {
 				duration: 2000,
 			});
 		}
