@@ -4,6 +4,7 @@ import { Navigation } from "./components/Navigation";
 import { Row } from "./components/Row";
 import { Toaster } from "./components/ui/sonner";
 import { getTodayTerm } from "./utils/getTodayWord";
+import { getProgress, updateProgress, type Progress } from "./utils/progress";
 
 const term = getTodayTerm();
 
@@ -14,6 +15,7 @@ const App = () => {
 	const [guesses, setGuesses] = useState<string[]>([]);
 	const [currentGuess, setCurrentGuess] = useState<string>("");
 	const [openProgress, setOpenProgress] = useState(false);
+	const [progress, setProgress] = useState<Progress>(() => getProgress());
 
 	const inputRef = useRef<HTMLInputElement>(null);
 
@@ -56,7 +58,8 @@ const App = () => {
 	useEffect(() => {
 		if (isGameOver && guesses.length > 0) {
 			const lastGuess = guesses[guesses.length - 1];
-			if (lastGuess === targetWord) {
+			const win = lastGuess === targetWord;
+			if (win) {
 				toast.success(`Parabéns! Você acertou: ${targetWord}`, {
 					duration: 1800,
 				});
@@ -65,6 +68,8 @@ const App = () => {
 					duration: 1800,
 				});
 			}
+			const updated = updateProgress(win);
+            setProgress(updated);
 			setTimeout(() => setOpenProgress(true), 2000);
 		}
 	}, [isGameOver, guesses, targetWord]);
