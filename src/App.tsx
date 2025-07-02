@@ -83,6 +83,7 @@ const App = () => {
 				isGameOver={isGameOver}
 				openProgress={openProgress}
 				setOpenProgress={setOpenProgress}
+				progress={progress}
 			/>
 			<Toaster
 				expand={true}
