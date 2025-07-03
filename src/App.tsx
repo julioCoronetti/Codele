@@ -4,7 +4,7 @@ import { Navigation } from "./components/Navigation";
 import { Row } from "./components/Row";
 import { Toaster } from "./components/ui/sonner";
 import { getTodayTerm } from "./utils/getTodayWord";
-import { getProgress, updateProgress, type Progress } from "./utils/progress";
+import { getProgress, type Progress, updateProgress } from "./utils/progress";
 
 const term = getTodayTerm();
 
@@ -69,7 +69,7 @@ const App = () => {
 				});
 			}
 			const updated = updateProgress(win);
-            setProgress(updated);
+			setProgress(updated);
 			setTimeout(() => setOpenProgress(true), 2000);
 		}
 	}, [isGameOver, guesses, targetWord]);

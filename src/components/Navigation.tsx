@@ -1,5 +1,6 @@
 import { ChartNoAxesColumn, LightbulbIcon } from "lucide-react";
 import { getTodayTerm } from "@/utils/getTodayWord";
+import type { Progress } from "@/utils/progress";
 import {
 	Dialog,
 	DialogContent,
@@ -7,14 +8,13 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "./ui/dialog";
-import type { Progress } from "@/utils/progress";
 
 type NavigationProps = {
 	guesses: string[];
 	isGameOver: boolean;
 	openProgress?: boolean;
 	setOpenProgress?: (open: boolean) => void;
-	progress: Progress
+	progress: Progress;
 };
 
 export const Navigation = ({
@@ -47,7 +47,10 @@ export const Navigation = ({
 							</div>
 							<div className="flex flex-col items-center">
 								<span className="text-5xl font-bold">
-									{progress.games > 0 ? Math.round((progress.wins / progress.games) * 100) : 0}%
+									{progress.games > 0
+										? Math.round((progress.wins / progress.games) * 100)
+										: 0}
+									%
 								</span>
 								<span className="text-lg">win rate</span>
 							</div>
