@@ -43,17 +43,17 @@ export const Navigation = ({
 						<div className="flex flex-row justify-center items-end gap-10 mt-10">
 							<div className="flex flex-col items-center">
 								<span className="text-5xl font-bold">{progress.games}</span>
-								<span className="text-lg">jogos</span>
+								<span className="text-lg">games</span>
 							</div>
 							<div className="flex flex-col items-center">
 								<span className="text-5xl font-bold">
 									{progress.games > 0 ? Math.round((progress.wins / progress.games) * 100) : 0}%
 								</span>
-								<span className="text-lg">de vitórias</span>
+								<span className="text-lg">win rate</span>
 							</div>
 							<div className="flex flex-col items-center">
 								<span className="text-5xl font-bold">{progress.streak}</span>
-								<span className="text-lg">sequência de vitórias</span>
+								<span className="text-lg">win streak</span>
 							</div>
 						</div>
 					</DialogContent>

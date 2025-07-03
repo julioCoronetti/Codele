@@ -60,11 +60,11 @@ const App = () => {
 			const lastGuess = guesses[guesses.length - 1];
 			const win = lastGuess === targetWord;
 			if (win) {
-				toast.success(`Parabéns! Você acertou: ${targetWord}`, {
+				toast.success(`Congratulations! You got it: ${targetWord}`, {
 					duration: 1800,
 				});
 			} else {
-				toast.error(`Fim de jogo! A palavra era: ${targetWord}`, {
+				toast.error(`Game over! The word was: ${targetWord}`, {
 					duration: 1800,
 				});
 			}
