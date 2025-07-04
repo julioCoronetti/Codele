@@ -8,6 +8,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "./ui/dialog";
+import { ModeToggle } from "./ModeToggle";
 
 type NavigationProps = {
 	guesses: string[];
@@ -30,6 +31,7 @@ export const Navigation = ({
 		<nav className="w-full h-15 border-b-1 border-white bg-gray-700 flex items-center justify-between px-5 tracking-widest">
 			<p className="text-2xl font-bold text-white">Codele</p>
 			<div className="flex h-full">
+				<ModeToggle />
 				<Dialog open={openProgress} onOpenChange={setOpenProgress}>
 					<DialogTrigger
 						className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out"
