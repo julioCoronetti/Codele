@@ -34,7 +34,7 @@ export const Navigation = ({
 				<ModeToggle />
 				<Dialog open={openProgress} onOpenChange={setOpenProgress}>
 					<DialogTrigger
-						className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out"
+						className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out outline-none"
 						disabled={!!openProgress}
 					>
 						<ChartNoAxesColumn className="text-white" />
@@ -65,7 +65,7 @@ export const Navigation = ({
 				</Dialog>
 
 				<Dialog>
-					<DialogTrigger className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out">
+					<DialogTrigger className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out outline-none">
 						<LightbulbIcon className="text-white" />
 					</DialogTrigger>
 					<DialogContent className=" w-100 flex flex-col text-white bg-gray-900 rounded-sm top-[30%] left-[83%]  text-xl">
