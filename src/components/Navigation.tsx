@@ -28,19 +28,19 @@ export const Navigation = ({
 	const term = getTodayTerm();
 
 	return (
-		<nav className="w-full h-15 border-b-1 border-white bg-gray-700 flex items-center justify-between px-5 tracking-widest">
-			<p className="text-2xl font-bold text-white">Codele</p>
+		<nav className="w-full h-15 border-b-1 border-secondary bg-secondary flex items-center justify-between px-5 tracking-widest">
+			<p className="text-2xl font-bold text-secondary-text">Codele</p>
 			<div className="flex h-full">
 				<ModeToggle />
 				<Dialog open={openProgress} onOpenChange={setOpenProgress}>
 					<DialogTrigger
-						className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out outline-none"
+						className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-hover-secondary transition duration-150 ease-in-out outline-none"
 						disabled={!!openProgress}
 					>
-						<ChartNoAxesColumn className="text-white" />
+						<ChartNoAxesColumn className="text-secondary-text" />
 					</DialogTrigger>
 					<DialogOverlay />
-					<DialogContent className="h-150 w-200 flex flex-col items-center justify-center text-white bg-gray-900 rounded-sm">
+					<DialogContent className="h-150 w-200 flex flex-col items-center justify-center text-white bg-gray-700 rounded-sm">
 						<DialogTitle className="text-4xl text-white">Progress</DialogTitle>
 						<div className="flex flex-row justify-center items-end gap-10 mt-10">
 							<div className="flex flex-col items-center">
@@ -65,10 +65,10 @@ export const Navigation = ({
 				</Dialog>
 
 				<Dialog>
-					<DialogTrigger className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-gray-500 transition duration-150 ease-in-out outline-none">
-						<LightbulbIcon className="text-white" />
+					<DialogTrigger className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-hover-secondary transition duration-150 ease-in-out outline-none">
+						<LightbulbIcon className="text-secondary-text" />
 					</DialogTrigger>
-					<DialogContent className=" w-100 flex flex-col text-white bg-gray-900 rounded-sm top-[30%] left-[83%]  text-xl">
+					<DialogContent className="w-100 flex flex-col text-white bg-gray-700 rounded-sm top-[30%] left-[83%]  text-xl">
 						<h2 className="flex items-center text-4xl gap-2 mb-5">
 							Hints <span className="text-3xl">💡</span>
 						</h2>

@@ -77,7 +77,7 @@ const App = () => {
 	const id = useId();
 
 	return (
-		<main className="h-screen w-screen flex flex-col bg-gradient-to-bl from-white to-gray-200">
+		<main className="h-screen w-screen flex flex-col bg-app-gradient">
 			<Navigation
 				guesses={guesses}
 				isGameOver={isGameOver}
@@ -96,7 +96,7 @@ const App = () => {
 					},
 				}}
 			/>
-			<h1 className="text-[10rem] tracking-[3rem] text-gray-700/10 absolute z-0 select-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold max-lg:text-[8rem] max-lg:tracking-[2rem] max-md:text-[5rem] max-md:tracking-[1.5rem] max-sm:text-[3.5rem]">
+			<h1 className="text-[10rem] tracking-[3rem] text-secondary-text-opacity-10 absolute z-0 select-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold max-lg:text-[8rem] max-lg:tracking-[2rem] max-md:text-[5rem] max-md:tracking-[1.5rem] max-sm:text-[3.5rem]">
 				Codele
 			</h1>
 			<div className="h-full flex flex-col items-center justify-center relative gap-5">
@@ -119,7 +119,7 @@ const App = () => {
 						className="flex items-center gap-5"
 					>
 						<input
-							className="border-5 border-gray-700 outline-0 rounded-sm px-5 py-3 text-xl font-bold text-gray-700"
+							className="border-5 border-secondary outline-0 rounded-sm px-5 py-3 text-xl font-bold text-secondary"
 							ref={inputRef}
 							onChange={handleInputChange}
 							maxLength={targetWord.length}
@@ -128,7 +128,7 @@ const App = () => {
 							id={id}
 						/>
 						<button
-							className="bg-gray-700 px-5 py-3 text-xl font-bold text-white outline-0 shadow-xl shadow-black/30 cursor-pointer rounded-sm transition duration-150 ease-in-out hover:scale-110"
+							className="bg-secondary px-5 py-3 text-xl font-bold text-secondary-text outline-0 shadow-xl shadow-black/30 cursor-pointer rounded-sm transition duration-150 ease-in-out hover:scale-110"
 							type="submit"
 						>
 							ENTER

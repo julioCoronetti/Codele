@@ -24,7 +24,7 @@ export const Row = ({ guess, targetWord }: RowProps) => {
 					<span
 						key={letter[index] || `empty-${index}`}
 						className={`w-15 h-15 inline-flex justify-center items-center mx-0.5 my-1 font-bold text-3xl rounded
-                            ${isFilled ? "text-white" : "text-transparent border-3 border-gray-700 bg-transparent rounded-sm shadow-md shadow-black/30 select-none"}
+                            ${isFilled ? "text-white" : "text-transparent border-3 border-secondary bg-transparent rounded-sm shadow-md shadow-black/30 select-none"}
                             ${isFilled && getLetterStatus(letter, index) === "correct" ? "bg-green-500" : ""}
                             ${isFilled && getLetterStatus(letter, index) === "present" ? "bg-yellow-500" : ""}
                             ${isFilled && getLetterStatus(letter, index) === "absent" ? "bg-red-500" : ""}
