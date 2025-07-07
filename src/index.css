@@ -154,3 +154,12 @@ p {
 .hover\:bg-hover-secondary:hover {
   background-color: var(--hover-secondary);
 }
+
+.btn-custom {
+  background-color: var(--secondary);
+  color: var(--secondary-text);
+}
+.dark .btn-custom {
+  background-color: var(--secondary);
+  color: var(--secondary-text);
+}

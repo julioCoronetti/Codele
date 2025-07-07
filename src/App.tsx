@@ -128,8 +128,12 @@ const App = () => {
 							id={id}
 						/>
 						<button
-							className="bg-secondary px-5 py-3 text-xl font-bold text-secondary-text outline-0 shadow-xl shadow-black/30 cursor-pointer rounded-sm transition duration-150 ease-in-out hover:scale-110"
+							className={`
+        btn-custom px-5 py-3 text-xl font-bold outline-0 shadow-xl shadow-black/30 rounded-sm transition duration-150 ease-in-out
+        ${currentGuess.length !== targetWord.length ? "opacity-50 cursor-not-allowed hover:scale-100" : "cursor-pointer hover:scale-110"}
+    `}
 							type="submit"
+							disabled={currentGuess.length !== targetWord.length}
 						>
 							ENTER
 						</button>
