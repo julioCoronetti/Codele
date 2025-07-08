@@ -9,6 +9,7 @@ import {
 	DialogOverlay,
 	DialogTrigger,
 } from "./ui/dialog";
+import { useTerm } from "@/contexts/TermContext";
 
 type NavigationProps = {
 	guesses: string[];
@@ -25,7 +26,7 @@ export const Navigation = ({
 	setOpenProgress,
 	progress,
 }: NavigationProps) => {
-	const term = getTodayTerm();
+	const term = useTerm();
 
 	return (
 		<nav className="w-full h-15 border-b-1 border-secondary bg-secondary flex items-center justify-between px-5 tracking-widest">

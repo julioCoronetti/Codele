@@ -4,12 +4,11 @@ import { Navigation } from "./components/Navigation";
 import { Row } from "./components/Row";
 import { Button } from "./components/ui/button";
 import { Toaster } from "./components/ui/sonner";
-import { getTodayTerm } from "./utils/getTodayWord";
 import { getProgress, type Progress, updateProgress } from "./utils/progress";
-
-const term = getTodayTerm();
+import { useTerm } from "./contexts/TermContext";
 
 const App = () => {
+	const term = useTerm();
 	const targetWord = term.word.toUpperCase();
 	const maxAttempts = 6;
 
@@ -54,7 +53,7 @@ const App = () => {
 				duration: 2000,
 			});
 		}
-	}, [guesses.length]);
+	}, [guesses.length, term]);
 
 	useEffect(() => {
 		if (isGameOver && guesses.length > 0) {
