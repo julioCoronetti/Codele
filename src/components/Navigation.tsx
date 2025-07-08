@@ -1,5 +1,5 @@
 import { ChartNoAxesColumn, LightbulbIcon } from "lucide-react";
-import { getTodayTerm } from "@/utils/getTodayWord";
+import { useTerm } from "@/contexts/TermContext";
 import type { Progress } from "@/utils/progress";
 import { ModeToggle } from "./ModeToggle";
 import { ProgressDialog } from "./ProgressDialog";
@@ -9,7 +9,6 @@ import {
 	DialogOverlay,
 	DialogTrigger,
 } from "./ui/dialog";
-import { useTerm } from "@/contexts/TermContext";
 
 type NavigationProps = {
 	guesses: string[];
