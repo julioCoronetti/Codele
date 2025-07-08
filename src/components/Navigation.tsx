@@ -6,7 +6,9 @@ import { ProgressDialog } from "./ProgressDialog";
 import {
 	Dialog,
 	DialogContent,
+	DialogDescription,
 	DialogOverlay,
+	DialogTitle,
 	DialogTrigger,
 } from "./ui/dialog";
 
@@ -48,22 +50,30 @@ export const Navigation = ({
 						<LightbulbIcon className="text-secondary-text" />
 					</DialogTrigger>
 					<DialogContent className="w-100 flex flex-col text-white bg-gray-700 rounded-sm top-[30%] left-[83%]  text-xl">
-						<h2 className="flex items-center text-4xl gap-2 mb-5">
+						<DialogTitle className="flex items-center text-4xl gap-2 mb-5">
 							Hints <span className="text-3xl">💡</span>
-						</h2>
+						</DialogTitle>
 
 						{guesses.length < 2 && !isGameOver && (
-							<p>You can only view the hint at the start of the game.</p>
+							<DialogDescription className="text-lg text-white">
+								You can only view the hint at the start of the game.
+							</DialogDescription>
 						)}
 
 						{guesses.length === 2 && !isGameOver && (
-							<li>This word appears in {term.languages.join(", ")}</li>
+							<DialogDescription className="text-lg text-white">
+								This word appears in {term.languages.join(", ")}
+							</DialogDescription>
 						)}
 
 						{(guesses.length === 4 || isGameOver) && (
 							<>
-								<li>This word appears in {term.languages.join(", ")}</li>
-								<li>This word is a {term.hint}</li>
+								<DialogDescription className="text-lg text-white">
+									This word appears in {term.languages.join(", ")}
+								</DialogDescription>
+								<DialogDescription className="text-lg text-white">
+									This word is a {term.hint}
+								</DialogDescription>
 							</>
 						)}
 					</DialogContent>
