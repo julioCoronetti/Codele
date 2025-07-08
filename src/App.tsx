@@ -2,10 +2,10 @@ import { type ChangeEvent, useEffect, useId, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Navigation } from "./components/Navigation";
 import { Row } from "./components/Row";
+import { Button } from "./components/ui/button";
 import { Toaster } from "./components/ui/sonner";
 import { getTodayTerm } from "./utils/getTodayWord";
 import { getProgress, type Progress, updateProgress } from "./utils/progress";
-import { Button } from "./components/ui/button";
 
 const term = getTodayTerm();
 

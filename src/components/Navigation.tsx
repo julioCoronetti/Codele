@@ -2,13 +2,13 @@ import { ChartNoAxesColumn, LightbulbIcon } from "lucide-react";
 import { getTodayTerm } from "@/utils/getTodayWord";
 import type { Progress } from "@/utils/progress";
 import { ModeToggle } from "./ModeToggle";
+import { ProgressDialog } from "./ProgressDialog";
 import {
 	Dialog,
 	DialogContent,
 	DialogOverlay,
 	DialogTrigger,
 } from "./ui/dialog";
-import { ProgressDialog } from "./ProgressDialog";
 
 type NavigationProps = {
 	guesses: string[];

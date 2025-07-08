@@ -66,7 +66,7 @@ p {
 	--secondary: #374151;
 	--secondary-text: #ffffff;
 	--hover-secondary: #6b7280;
-	--secondary-text-rgb: 55,65,81;
+	--secondary-text-rgb: 55, 65, 81;
 	--secondary-foreground: oklch(0.21 0.034 264.665);
 	--muted: oklch(0.967 0.003 264.542);
 	--muted-foreground: oklch(0.551 0.027 264.364);
@@ -105,7 +105,7 @@ p {
 	--secondary: #ffffff;
 	--secondary-text: #374151;
 	--hover-secondary: #d1d5db;
-	--secondary-text-rgb: 255,255,255;
+	--secondary-text-rgb: 255, 255, 255;
 	--secondary-foreground: oklch(0.985 0.002 247.839);
 	--muted: oklch(0.278 0.033 256.848);
 	--muted-foreground: oklch(0.707 0.022 261.325);
@@ -140,26 +140,30 @@ p {
 }
 
 .bg-app-gradient {
-  background-image: linear-gradient(to bottom left, var(--gradient-from), var(--gradient-to));
+	background-image: linear-gradient(
+		to bottom left,
+		var(--gradient-from),
+		var(--gradient-to)
+	);
 }
 
 .text-secondary-text {
-  color: var(--secondary-text);
+	color: var(--secondary-text);
 }
 
 .text-secondary-text-opacity-10 {
-  color: rgb(var(--secondary-text-rgb), 0.1);
+	color: rgb(var(--secondary-text-rgb), 0.1);
 }
 
 .hover\:bg-hover-secondary:hover {
-  background-color: var(--hover-secondary);
+	background-color: var(--hover-secondary);
 }
 
 .btn-custom {
-  background-color: var(--secondary);
-  color: var(--secondary-text);
+	background-color: var(--secondary);
+	color: var(--secondary-text);
 }
 .dark .btn-custom {
-  background-color: var(--secondary);
-  color: var(--secondary-text);
+	background-color: var(--secondary);
+	color: var(--secondary-text);
 }

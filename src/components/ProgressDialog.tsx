@@ -28,12 +28,14 @@ export const ProgressDialog = ({ progress }: ProgressDialogProps) => {
 					<span className="text-lg">win streak</span>
 				</div>
 			</div>
-            <div className="w-100 h-50 bg-white mt-10 rounded-sm p-5 flex flex-col justify-between">
-                <h3 className="text-[2rem] font-bold text-gray-500">Today's word: </h3>
-                <div className="w-full h-[50%]">
-                    <p className="text-6xl text-gray-500 text-center">INPUT<span>🥳</span></p>
-                </div>
-            </div>
+			<div className="w-100 h-50 bg-white mt-10 rounded-sm p-5 flex flex-col justify-between">
+				<h3 className="text-[2rem] font-bold text-gray-500">Today's word: </h3>
+				<div className="w-full h-[50%]">
+					<p className="text-6xl text-gray-500 text-center">
+						INPUT<span>🥳</span>
+					</p>
+				</div>
+			</div>
 		</DialogContent>
 	);
 };
