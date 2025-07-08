@@ -6,9 +6,9 @@ import {
 	Dialog,
 	DialogContent,
 	DialogOverlay,
-	DialogTitle,
 	DialogTrigger,
 } from "./ui/dialog";
+import { ProgressDialog } from "./ProgressDialog";
 
 type NavigationProps = {
 	guesses: string[];
@@ -40,28 +40,7 @@ export const Navigation = ({
 						<ChartNoAxesColumn className="text-secondary-text" />
 					</DialogTrigger>
 					<DialogOverlay />
-					<DialogContent className="h-150 w-200 flex flex-col items-center justify-center text-white bg-gray-700 rounded-sm">
-						<DialogTitle className="text-4xl text-white">Progress</DialogTitle>
-						<div className="flex flex-row justify-center items-end gap-10 mt-10">
-							<div className="flex flex-col items-center">
-								<span className="text-5xl font-bold">{progress.games}</span>
-								<span className="text-lg">games</span>
-							</div>
-							<div className="flex flex-col items-center">
-								<span className="text-5xl font-bold">
-									{progress.games > 0
-										? Math.round((progress.wins / progress.games) * 100)
-										: 0}
-									%
-								</span>
-								<span className="text-lg">win rate</span>
-							</div>
-							<div className="flex flex-col items-center">
-								<span className="text-5xl font-bold">{progress.streak}</span>
-								<span className="text-lg">win streak</span>
-							</div>
-						</div>
-					</DialogContent>
+					<ProgressDialog progress={progress} />
 				</Dialog>
 
 				<Dialog>

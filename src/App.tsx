@@ -5,6 +5,7 @@ import { Row } from "./components/Row";
 import { Toaster } from "./components/ui/sonner";
 import { getTodayTerm } from "./utils/getTodayWord";
 import { getProgress, type Progress, updateProgress } from "./utils/progress";
+import { Button } from "./components/ui/button";
 
 const term = getTodayTerm();
 
@@ -127,16 +128,14 @@ const App = () => {
 							value={currentGuess}
 							id={id}
 						/>
-						<button
-							className={`
-        btn-custom px-5 py-3 text-xl font-bold outline-0 shadow-xl shadow-black/30 rounded-sm transition duration-150 ease-in-out
-        ${currentGuess.length !== targetWord.length ? "opacity-50 cursor-not-allowed hover:scale-100" : "cursor-pointer hover:scale-110"}
-    `}
+						<Button
+							className="btn-custom text-xl font-bold shadow-xl shadow-black/30"
 							type="submit"
+							variant="lobbyVariant"
 							disabled={currentGuess.length !== targetWord.length}
 						>
 							ENTER
-						</button>
+						</Button>
 					</form>
 				)}
 			</div>
