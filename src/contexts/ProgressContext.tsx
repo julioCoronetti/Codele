@@ -1,5 +1,5 @@
-import { getProgress, updateProgress, type Progress } from "@/utils/progress";
 import { createContext, useContext, useState } from "react";
+import { getProgress, type Progress, updateProgress } from "@/utils/progress";
 
 type ProgressContextType = {
 	progress: Progress;
