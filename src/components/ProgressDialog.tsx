@@ -1,6 +1,6 @@
+import { useProgress } from "@/contexts/ProgressContext";
 import { useTerm } from "@/contexts/TermContext";
 import { DialogContent, DialogDescription, DialogTitle } from "./ui/dialog";
-import { useProgress } from "@/contexts/ProgressContext";
 
 export const ProgressDialog = () => {
 	const term = useTerm();

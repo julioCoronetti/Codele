@@ -4,8 +4,8 @@ import { Navigation } from "./components/Navigation";
 import { Row } from "./components/Row";
 import { Button } from "./components/ui/button";
 import { Toaster } from "./components/ui/sonner";
-import { useTerm } from "./contexts/TermContext";
 import { useProgress } from "./contexts/ProgressContext";
+import { useTerm } from "./contexts/TermContext";
 
 const App = () => {
 	const term = useTerm();

@@ -1,5 +1,4 @@
 import { ChartNoAxesColumn, LightbulbIcon } from "lucide-react";
-import { useProgress } from "@/contexts/ProgressContext";
 import { useTerm } from "@/contexts/TermContext";
 import { ModeToggle } from "./ModeToggle";
 import { ProgressDialog } from "./ProgressDialog";
