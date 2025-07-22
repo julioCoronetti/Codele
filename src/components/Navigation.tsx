@@ -1,6 +1,6 @@
 import { ChartNoAxesColumn, LightbulbIcon } from "lucide-react";
+import { useProgress } from "@/contexts/ProgressContext";
 import { useTerm } from "@/contexts/TermContext";
-import type { Progress } from "@/utils/progress";
 import { ModeToggle } from "./ModeToggle";
 import { ProgressDialog } from "./ProgressDialog";
 import {
@@ -17,7 +17,6 @@ type NavigationProps = {
 	isGameOver: boolean;
 	openProgress?: boolean;
 	setOpenProgress?: (open: boolean) => void;
-	progress: Progress;
 };
 
 export const Navigation = ({
@@ -25,9 +24,9 @@ export const Navigation = ({
 	isGameOver,
 	openProgress,
 	setOpenProgress,
-	progress,
 }: NavigationProps) => {
 	const term = useTerm();
+	const { progress } = useProgress();
 
 	return (
 		<nav className="w-full h-15 border-b-1 border-secondary bg-secondary flex items-center justify-between px-5 tracking-widest">

@@ -5,7 +5,7 @@ import { Row } from "./components/Row";
 import { Button } from "./components/ui/button";
 import { Toaster } from "./components/ui/sonner";
 import { useTerm } from "./contexts/TermContext";
-import { getProgress, type Progress, updateProgress } from "./utils/progress";
+import { updateProgress } from "./utils/progress";
 
 const App = () => {
 	const term = useTerm();
@@ -15,7 +15,6 @@ const App = () => {
 	const [guesses, setGuesses] = useState<string[]>([]);
 	const [currentGuess, setCurrentGuess] = useState<string>("");
 	const [openProgress, setOpenProgress] = useState(false);
-	const [progress, setProgress] = useState<Progress>(() => getProgress());
 
 	const inputRef = useRef<HTMLInputElement>(null);
 
@@ -68,8 +67,7 @@ const App = () => {
 					duration: 1800,
 				});
 			}
-			const updated = updateProgress(win);
-			setProgress(updated);
+			updateProgress(win);
 			setTimeout(() => setOpenProgress(true), 2000);
 		}
 	}, [isGameOver, guesses, targetWord]);
@@ -83,7 +81,6 @@ const App = () => {
 				isGameOver={isGameOver}
 				openProgress={openProgress}
 				setOpenProgress={setOpenProgress}
-				progress={progress}
 			/>
 			<Toaster
 				expand={true}

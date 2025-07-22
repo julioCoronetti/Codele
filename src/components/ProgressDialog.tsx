@@ -1,3 +1,4 @@
+import { useTerm } from "@/contexts/TermContext";
 import type { Progress } from "@/utils/progress";
 import { DialogContent, DialogDescription, DialogTitle } from "./ui/dialog";
 
@@ -6,6 +7,8 @@ type ProgressDialogProps = {
 };
 
 export const ProgressDialog = ({ progress }: ProgressDialogProps) => {
+	const term = useTerm();
+
 	return (
 		<DialogContent className="h-150 w-200 flex flex-col items-center p-20 text-white bg-gray-700 rounded-sm">
 			<DialogTitle className="text-5xl text-white">Progress</DialogTitle>
@@ -35,7 +38,8 @@ export const ProgressDialog = ({ progress }: ProgressDialogProps) => {
 				<h3 className="text-[2rem] font-bold text-gray-500">Today's word: </h3>
 				<div className="w-full h-[50%]">
 					<p className="text-6xl text-gray-500 text-center">
-						INPUT<span>🥳</span>
+						{term.word.toUpperCase()}
+						<span>🥳</span>
 					</p>
 				</div>
 			</div>
