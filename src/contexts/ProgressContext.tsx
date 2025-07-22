@@ -24,17 +24,17 @@ export const ProgressProvider = ({
 	const gameEndedRef = useRef<boolean>(false);
 
 	function handleUpdateProgress(win: boolean) {
-        if (!gameEndedRef.current) {
-            const updated = updateProgress(win);
-            setProgress(updated);
-            gameEndedRef.current = true;
-        }
-    }
+		if (!gameEndedRef.current) {
+			const updated = updateProgress(win);
+			setProgress(updated);
+			gameEndedRef.current = true;
+		}
+	}
 
 	function resetGame() {
-        setIsGameOver(false);
-        gameEndedRef.current = false; // Reset da flag
-    }
+		setIsGameOver(false);
+		gameEndedRef.current = false; // Reset da flag
+	}
 
 	return (
 		<ProgressContext.Provider
