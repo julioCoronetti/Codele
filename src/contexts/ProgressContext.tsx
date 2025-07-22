@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 import { getProgress, type Progress, updateProgress } from "@/utils/progress";
 
 type ProgressContextType = {
@@ -7,6 +7,7 @@ type ProgressContextType = {
 	updateProgress: (win: boolean) => void;
 	isGameOver: boolean;
 	setIsGameOver: React.Dispatch<React.SetStateAction<boolean>>;
+	resetGame: () => void;
 };
 
 const ProgressContext = createContext<ProgressContextType | undefined>(
@@ -20,11 +21,20 @@ export const ProgressProvider = ({
 }) => {
 	const [progress, setProgress] = useState<Progress>(() => getProgress());
 	const [isGameOver, setIsGameOver] = useState<boolean>(false);
+	const gameEndedRef = useRef<boolean>(false);
 
 	function handleUpdateProgress(win: boolean) {
-		const updated = updateProgress(win);
-		setProgress(updated);
-	}
+        if (!gameEndedRef.current) {
+            const updated = updateProgress(win);
+            setProgress(updated);
+            gameEndedRef.current = true;
+        }
+    }
+
+	function resetGame() {
+        setIsGameOver(false);
+        gameEndedRef.current = false; // Reset da flag
+    }
 
 	return (
 		<ProgressContext.Provider
@@ -34,6 +44,7 @@ export const ProgressProvider = ({
 				updateProgress: handleUpdateProgress,
 				isGameOver,
 				setIsGameOver,
+				resetGame,
 			}}
 		>
 			{children}

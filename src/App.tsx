@@ -16,6 +16,7 @@ const App = () => {
 	const [guesses, setGuesses] = useState<string[]>([]);
 	const [currentGuess, setCurrentGuess] = useState<string>("");
 	const [openProgress, setOpenProgress] = useState(false);
+	const [progressUpdated, setProgressUpdated] = useState(false);
 
 	const inputRef = useRef<HTMLInputElement>(null);
 
@@ -59,7 +60,7 @@ const App = () => {
 	}, [guesses.length, term]);
 
 	useEffect(() => {
-		if (isGameOver && guesses.length > 0) {
+		if (isGameOver && guesses.length > 0 && !progressUpdated) {
 			const lastGuess = guesses[guesses.length - 1];
 			const win = lastGuess === targetWord;
 			if (win) {
@@ -72,9 +73,10 @@ const App = () => {
 				});
 			}
 			updateProgress(win);
+			setProgressUpdated(true);
 			setTimeout(() => setOpenProgress(true), 2000);
 		}
-	}, [isGameOver, guesses, targetWord, updateProgress]);
+	}, [isGameOver, guesses, targetWord, updateProgress, progressUpdated]);
 
 	const id = useId();
 
