@@ -5,10 +5,11 @@ import { Row } from "./components/Row";
 import { Button } from "./components/ui/button";
 import { Toaster } from "./components/ui/sonner";
 import { useTerm } from "./contexts/TermContext";
-import { updateProgress } from "./utils/progress";
+import { useProgress } from "./contexts/ProgressContext";
 
 const App = () => {
 	const term = useTerm();
+	const { updateProgress, isGameOver, setIsGameOver } = useProgress();
 	const targetWord = term.word.toUpperCase();
 	const maxAttempts = 6;
 
@@ -18,8 +19,11 @@ const App = () => {
 
 	const inputRef = useRef<HTMLInputElement>(null);
 
-	const isGameOver =
-		guesses.includes(targetWord) || guesses.length >= maxAttempts;
+	useEffect(() => {
+		const gameOver =
+			guesses.includes(targetWord) || guesses.length >= maxAttempts;
+		setIsGameOver(gameOver);
+	}, [guesses, targetWord, setIsGameOver]);
 
 	useEffect(() => {
 		inputRef.current?.focus();
@@ -70,7 +74,7 @@ const App = () => {
 			updateProgress(win);
 			setTimeout(() => setOpenProgress(true), 2000);
 		}
-	}, [isGameOver, guesses, targetWord]);
+	}, [isGameOver, guesses, targetWord, updateProgress]);
 
 	const id = useId();
 

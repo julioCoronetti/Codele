@@ -1,13 +1,10 @@
 import { useTerm } from "@/contexts/TermContext";
-import type { Progress } from "@/utils/progress";
 import { DialogContent, DialogDescription, DialogTitle } from "./ui/dialog";
+import { useProgress } from "@/contexts/ProgressContext";
 
-type ProgressDialogProps = {
-	progress: Progress;
-};
-
-export const ProgressDialog = ({ progress }: ProgressDialogProps) => {
+export const ProgressDialog = () => {
 	const term = useTerm();
+	const { progress, isGameOver } = useProgress();
 
 	return (
 		<DialogContent className="h-150 w-200 flex flex-col items-center p-20 text-white bg-gray-700 rounded-sm">
@@ -34,15 +31,19 @@ export const ProgressDialog = ({ progress }: ProgressDialogProps) => {
 					<span className="text-lg">win streak</span>
 				</div>
 			</div>
-			<div className="w-100 h-50 bg-white mt-10 rounded-sm p-5 flex flex-col justify-between">
-				<h3 className="text-[2rem] font-bold text-gray-500">Today's word: </h3>
-				<div className="w-full h-[50%]">
-					<p className="text-6xl text-gray-500 text-center">
-						{term.word.toUpperCase()}
-						<span>🥳</span>
-					</p>
+			{isGameOver && (
+				<div className="w-100 h-50 bg-white mt-10 rounded-sm p-5 flex flex-col justify-between">
+					<h3 className="text-[2rem] font-bold text-gray-500">
+						Today's word:{" "}
+					</h3>
+					<div className="w-full h-[50%]">
+						<p className="text-6xl text-gray-500 text-center">
+							{term.word.toUpperCase()}
+							<span>🥳</span>
+						</p>
+					</div>
 				</div>
-			</div>
+			)}
 		</DialogContent>
 	);
 };

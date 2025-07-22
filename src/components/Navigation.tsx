@@ -26,7 +26,6 @@ export const Navigation = ({
 	setOpenProgress,
 }: NavigationProps) => {
 	const term = useTerm();
-	const { progress } = useProgress();
 
 	return (
 		<nav className="w-full h-15 border-b-1 border-secondary bg-secondary flex items-center justify-between px-5 tracking-widest">
@@ -41,7 +40,7 @@ export const Navigation = ({
 						<ChartNoAxesColumn className="text-secondary-text" />
 					</DialogTrigger>
 					<DialogOverlay />
-					<ProgressDialog progress={progress} />
+					<ProgressDialog />
 				</Dialog>
 
 				<Dialog>
