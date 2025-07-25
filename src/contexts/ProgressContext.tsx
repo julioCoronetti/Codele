@@ -33,7 +33,7 @@ export const ProgressProvider = ({
 
 	function resetGame() {
 		setIsGameOver(false);
-		gameEndedRef.current = false; // Reset da flag
+		gameEndedRef.current = false;
 	}
 
 	return (
