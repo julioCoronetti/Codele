@@ -7,7 +7,7 @@ export const ProgressDialog = () => {
 	const { progress, isGameOver } = useProgress();
 
 	return (
-		<DialogContent className="h-150 w-200 flex flex-col items-center p-20 text-white bg-gray-700 rounded-sm">
+		<DialogContent className="h-130 w-180 flex flex-col items-center p-10 text-white bg-gray-700 rounded-sm">
 			<DialogTitle className="text-5xl text-white">Progress</DialogTitle>
 			<DialogDescription className="text-md text-white/70">
 				See your stats!

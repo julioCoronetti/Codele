@@ -47,5 +47,166 @@
 		"hint": "repeat loop",
 		"definition": "Executes a block of code multiple times, based on a condition.",
 		"languages": ["all languages"]
-	}
+	},
+    {
+        "id": 8,
+        "word": "const",
+        "hint": "constant declaration",
+        "definition": "Declares a constant variable that cannot be reassigned.",
+        "languages": ["JavaScript", "C++", "C#"]
+    },
+    {
+        "id": 9,
+        "word": "class",
+        "hint": "object blueprint",
+        "definition": "Template for creating objects with properties and methods.",
+        "languages": ["Python", "Java", "C#", "C++", "JavaScript"]
+    },
+    {
+        "id": 10,
+        "word": "function",
+        "hint": "code block",
+        "definition": "Reusable block of code that performs a specific task.",
+        "languages": ["JavaScript", "Python", "C#", "C++"]
+    },
+    {
+        "id": 11,
+        "word": "string",
+        "hint": "text data",
+        "definition": "Data type that represents a sequence of characters.",
+        "languages": ["all languages"]
+    },
+    {
+        "id": 12,
+        "word": "boolean",
+        "hint": "true or false",
+        "definition": "Data type that can only be true or false.",
+        "languages": ["all languages"]
+    },
+    {
+        "id": 13,
+        "word": "integer",
+        "hint": "whole number",
+        "definition": "Data type that represents whole numbers.",
+        "languages": ["all languages"]
+    },
+    {
+        "id": 14,
+        "word": "object",
+        "hint": "data container",
+        "definition": "Collection of properties and methods grouped together.",
+        "languages": ["JavaScript", "Python", "Java", "C#"]
+    },
+    {
+        "id": 15,
+        "word": "method",
+        "hint": "class function",
+        "definition": "Function that belongs to a class or object.",
+        "languages": ["Python", "Java", "C#", "JavaScript"]
+    },
+    {
+        "id": 16,
+        "word": "return",
+        "hint": "function output",
+        "definition": "Statement that ends function execution and returns a value.",
+        "languages": ["all languages"]
+    },
+    {
+        "id": 17,
+        "word": "import",
+        "hint": "include module",
+        "definition": "Brings external code or libraries into your program.",
+        "languages": ["Python", "JavaScript", "Java", "C#"]
+    },
+    {
+        "id": 18,
+        "word": "export",
+        "hint": "share module",
+        "definition": "Makes code available for use in other files.",
+        "languages": ["JavaScript", "Python", "C++"]
+    },
+    {
+        "id": 19,
+        "word": "try",
+        "hint": "error handling",
+        "definition": "Block that contains code that might throw an error.",
+        "languages": ["Python", "JavaScript", "Java", "C#"]
+    },
+    {
+        "id": 20,
+        "word": "catch",
+        "hint": "handle errors",
+        "definition": "Block that handles errors thrown in try block.",
+        "languages": ["JavaScript", "Java", "C#", "C++"]
+    },
+    {
+        "id": 21,
+        "word": "async",
+        "hint": "asynchronous",
+        "definition": "Declares a function that returns a Promise.",
+        "languages": ["JavaScript", "Python", "C#"]
+    },
+    {
+        "id": 22,
+        "word": "await",
+        "hint": "wait for promise",
+        "definition": "Pauses execution until a Promise is resolved.",
+        "languages": ["JavaScript", "Python", "C#"]
+    },
+    {
+        "id": 23,
+        "word": "switch",
+        "hint": "multiple conditions",
+        "definition": "Control structure for multiple conditional branches.",
+        "languages": ["JavaScript", "Java", "C#", "C++"]
+    },
+    {
+        "id": 24,
+        "word": "break",
+        "hint": "exit loop",
+        "definition": "Statement that exits a loop or switch block.",
+        "languages": ["all languages"]
+    },
+    {
+        "id": 25,
+        "word": "continue",
+        "hint": "skip iteration",
+        "definition": "Skips the rest of current loop iteration.",
+        "languages": ["all languages"]
+    },
+    {
+        "id": 26,
+        "word": "else",
+        "hint": "alternative condition",
+        "definition": "Executes when if condition is false.",
+        "languages": ["all languages"]
+    },
+    {
+        "id": 27,
+        "word": "lambda",
+        "hint": "anonymous function",
+        "definition": "Small anonymous function defined inline.",
+        "languages": ["Python", "C#", "JavaScript"]
+    },
+    {
+        "id": 28,
+        "word": "map",
+        "hint": "transform array",
+        "definition": "Method that creates new array by transforming each element.",
+        "languages": ["JavaScript", "Python"]
+    },
+    {
+        "id": 29,
+        "word": "filter",
+        "hint": "select elements",
+        "definition": "Method that creates new array with elements that pass a test.",
+        "languages": ["JavaScript", "Python"]
+    },
+    {
+        "id": 30,
+        "word": "reduce",
+        "hint": "accumulate values",
+        "definition": "Method that reduces array to single value through accumulation.",
+        "languages": ["JavaScript", "Python"]
+    }
 ]
