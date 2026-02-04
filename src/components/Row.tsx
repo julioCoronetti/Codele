@@ -1,9 +1,11 @@
+import { memo } from "react";
+
 type RowProps = {
 	guess: string;
 	targetWord: string;
 };
 
-export const Row = ({ guess, targetWord }: RowProps) => {
+export const Row = memo(({ guess, targetWord }: RowProps) => {
 	function getLetterStatus(letter: string, index: number) {
 		if (letter === targetWord[index]) {
 			return "correct";
@@ -23,6 +25,7 @@ export const Row = ({ guess, targetWord }: RowProps) => {
 				const status = isFilled ? getLetterStatus(letter, index) : null;
 				return (
 					<span
+						// biome-ignore lint/suspicious/noArrayIndexKey: Index is stable here
 						key={index}
 						className={`w-15 h-15 inline-flex justify-center items-center mx-0.5 my-1 font-bold text-3xl rounded
                             ${isFilled ? "text-white" : "text-transparent border-3 border-secondary bg-transparent rounded-sm shadow-md shadow-black/30 select-none"}
@@ -37,4 +40,4 @@ export const Row = ({ guess, targetWord }: RowProps) => {
 			})}
 		</div>
 	);
-};
+});
