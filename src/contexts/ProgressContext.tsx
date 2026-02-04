@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef, useState } from "react";
+import { createContext, useContext, useRef, useState, useCallback, useMemo } from "react";
 import { getProgress, type Progress, updateProgress } from "@/utils/progress";
 
 type ProgressContextType = {
@@ -23,30 +23,33 @@ export const ProgressProvider = ({
 	const [isGameOver, setIsGameOver] = useState<boolean>(false);
 	const gameEndedRef = useRef<boolean>(false);
 
-	function handleUpdateProgress(win: boolean) {
+	const handleUpdateProgress = useCallback((win: boolean) => {
 		if (!gameEndedRef.current) {
 			const updated = updateProgress(win);
 			setProgress(updated);
 			gameEndedRef.current = true;
 		}
-	}
+	}, []);
 
-	function resetGame() {
+	const resetGame = useCallback(() => {
 		setIsGameOver(false);
 		gameEndedRef.current = false;
-	}
+	}, []);
+
+	const value = useMemo(
+		() => ({
+			progress,
+			setProgress,
+			updateProgress: handleUpdateProgress,
+			isGameOver,
+			setIsGameOver,
+			resetGame,
+		}),
+		[progress, isGameOver, handleUpdateProgress, resetGame],
+	);
 
 	return (
-		<ProgressContext.Provider
-			value={{
-				progress,
-				setProgress,
-				updateProgress: handleUpdateProgress,
-				isGameOver,
-				setIsGameOver,
-				resetGame,
-			}}
-		>
+		<ProgressContext.Provider value={value}>
 			{children}
 		</ProgressContext.Provider>
 	);
