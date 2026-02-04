@@ -1,4 +1,9 @@
-import { ChartNoAxesColumn, LightbulbIcon } from "lucide-react";
+import {
+	Calendar,
+	ChartNoAxesColumn,
+	Gamepad2,
+	LightbulbIcon,
+} from "lucide-react";
 import { memo } from "react";
 import { useTerm } from "@/contexts/TermContext";
 import { ModeToggle } from "./ModeToggle";
@@ -21,12 +26,31 @@ type NavigationProps = {
 
 export const Navigation = memo(
 	({ guesses, isGameOver, openProgress, setOpenProgress }: NavigationProps) => {
-		const term = useTerm();
+		const { term, gameMode, startPracticeGame, startDailyGame } = useTerm();
 
 		return (
 			<nav className="w-full h-15 border-b-1 border-secondary bg-secondary flex items-center justify-between px-5 tracking-widest">
 				<p className="text-2xl font-bold text-secondary-text">Codele</p>
 				<div className="flex h-full">
+					{gameMode === "daily" ? (
+						<button
+							type="button"
+							onClick={startPracticeGame}
+							className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-hover-secondary transition duration-150 ease-in-out outline-none"
+							title="Practice Mode"
+						>
+							<Gamepad2 className="text-secondary-text" />
+						</button>
+					) : (
+						<button
+							type="button"
+							onClick={startDailyGame}
+							className="w-15 h-full flex justify-center items-center cursor-pointer hover:bg-hover-secondary transition duration-150 ease-in-out outline-none"
+							title="Daily Mode"
+						>
+							<Calendar className="text-secondary-text" />
+						</button>
+					)}
 					<ModeToggle />
 					<Dialog open={openProgress} onOpenChange={setOpenProgress}>
 						<DialogTrigger

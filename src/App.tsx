@@ -8,8 +8,8 @@ import { useProgress } from "./contexts/ProgressContext";
 import { useTerm } from "./contexts/TermContext";
 
 const App = () => {
-	const term = useTerm();
-	const { updateProgress, isGameOver, setIsGameOver } = useProgress();
+	const { term, gameMode } = useTerm();
+	const { updateProgress, isGameOver, setIsGameOver, resetGame } = useProgress();
 	const targetWord = term.word.toUpperCase();
 	const maxAttempts = 6;
 
@@ -19,6 +19,15 @@ const App = () => {
 	const [progressUpdated, setProgressUpdated] = useState(false);
 
 	const inputRef = useRef<HTMLInputElement>(null);
+
+	useEffect(() => {
+		setGuesses((prev) => (prev.length === 0 ? prev : []));
+		setCurrentGuess((prev) => (prev === "" ? prev : ""));
+		setProgressUpdated((prev) => (prev === false ? prev : false));
+		setOpenProgress((prev) => (prev === false ? prev : false));
+		resetGame();
+		inputRef.current?.focus();
+	}, [term, resetGame]);
 
 	useEffect(() => {
 		const gameOver =
@@ -72,11 +81,20 @@ const App = () => {
 					duration: 1800,
 				});
 			}
-			updateProgress(win);
+			if (gameMode === "daily") {
+				updateProgress(win);
+			}
 			setProgressUpdated(true);
 			setTimeout(() => setOpenProgress(true), 2000);
 		}
-	}, [isGameOver, guesses, targetWord, updateProgress, progressUpdated]);
+	}, [
+		isGameOver,
+		guesses,
+		targetWord,
+		updateProgress,
+		progressUpdated,
+		gameMode,
+	]);
 
 	const id = useId();
 
